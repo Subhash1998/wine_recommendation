@@ -1,0 +1,37 @@
+
+
+
+<html>
+    <head>
+        <title>Wine</title>
+    </head>
+
+    <body>
+        
+        <h1><center>Create Your Account</center></h1>
+
+        {% if registered %}
+        <strong>thank you for registering!</strong>
+        <a href="{% url 'reviews:home' %}">Return to the homepage.</a><br />
+        {% else %}
+       <h2><strong><center>register here!</center></strong></h2><br />
+
+        <form id="user_form" method="post" action=""
+                enctype="multipart/form-data">
+
+            {% csrf_token %}
+            <!-- Display each form. The as_p method wraps each element in a paragraph
+                 (<p>) element. This ensures each element appears on a new line,
+                 making everything look neater. -->
+           <div>
+            {{ user_form.as_p }}
+           </div>
+            <!-- Provide a button to click to submit the form. -->
+           <br><br> <center><input type="submit" name="submit" value="Register" /></center>
+        </form>	
+        {% endif %}
+    </body>
+
+</html>
+
+
